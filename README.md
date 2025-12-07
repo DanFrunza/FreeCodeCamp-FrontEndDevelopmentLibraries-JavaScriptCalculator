@@ -21,13 +21,13 @@ When reading the code, focus first on `calculatorSlice.js` — it contains the b
 
 - State shape (conceptually): the slice keeps the currently displayed value, the previous value (when an operator has been entered), the current operator, and flags to control overwriting vs appending input.
 
+
 - Reducers / Actions implemented (high level):
-	- addDigit: append a new digit to the current input (handles leading zero behavior)
-	- addDecimal: handle decimal point input and prevent multiple decimals in the same number
-	- chooseOperator: store the selected operator and prepare state for the next value
-	- evaluate: compute the result using the current operator and operands
-	- clearAll: reset the calculator to initial state
-	- deleteDigit: remove the last digit from the current input
+  - `addDigit` — append a new digit (or decimal) to the current input. Handles starting a number, leading-zero behavior, negative-start (`-`) cases, and prevents multiple decimals in a single number.
+  - `applyOperator` — apply or queue an operator. When there is a current input it appends it and the operator to the internal expression; when operators are entered consecutively it replaces or adjusts them (including allowing a minus sign for negative numbers).
+  - `calculateResult` — evaluate the current expression (expression + current input) using the evaluation logic, store the numeric result, and set flags so the result can be used in the next operation.
+  - `clearAll` — reset the calculator state to initial values.
+  - `deleteLast` — remove the last character from the `currentInput` (backspace behavior).
 
 - Calculation logic: the slice contains helper logic to parse string inputs, perform arithmetic, and format the output for the display. All non-UI decisions (when to overwrite, when to chain calculations, how decimals are merged) are located in the slice so the component remains focused on rendering and dispatching.
 
@@ -59,6 +59,10 @@ Open the listed local URL (usually `http://localhost:5173`) in your browser to v
 - Improve decimal/precision handling and formatting of very large/small numbers.
 - Implement full expression parsing to support parentheses and operator precedence.
 - Improve UI/UX: keyboard support, accessibility enhancements, and error messaging for invalid operations.
+
+## Author's note
+
+This is my first attempt at actively adding comments throughout the code, so apologies if they aren’t perfect.
 
 ## Live demo
 
