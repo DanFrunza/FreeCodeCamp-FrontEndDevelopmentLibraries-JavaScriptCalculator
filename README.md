@@ -60,3 +60,8 @@ Open the listed local URL (usually `http://localhost:5173`) in your browser to v
 - Implement full expression parsing to support parentheses and operator precedence.
 - Improve UI/UX: keyboard support, accessibility enhancements, and error messaging for invalid operations.
 
+## Live demo
+
+You can view the deployed app here:
+
+[https://danfrunza.me/FreeCodeCamp-FrontEndDevelopmentLibraries-JavaScriptCalculator/](https://danfrunza.me/FreeCodeCamp-FrontEndDevelopmentLibraries-JavaScriptCalculator/)
